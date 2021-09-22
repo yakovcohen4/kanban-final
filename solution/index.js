@@ -2,9 +2,9 @@ const toDoButtonEl = document.getElementById("submit-add-to-do");
 const inProgressElButtonEl = document.getElementById("submit-add-in-progress");
 const doneButtonEl = document.getElementById("submit-add-done");
 
-toDoButtonEl.addEventListener("click",addTaskToSection)
-inProgressElButtonEl.addEventListener("click",addTaskToSection)
-doneButtonEl.addEventListener("click",addTaskToSection)
+toDoButtonEl.addEventListener("click",addTaskToCorrectSection)
+inProgressElButtonEl.addEventListener("click",addTaskToCorrectSection)
+doneButtonEl.addEventListener("click",addTaskToCorrectSection)
 
 // add a task to the correct section
 function addTaskToCorrectSection({target}) {  
