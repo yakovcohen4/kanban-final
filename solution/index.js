@@ -169,7 +169,7 @@ function dragOver(e){
 function dragDrop(e){
     const ulEl = e.target;                                     
     const section = ulEl.parentElement;
-    if (section.className == "tasks") {                      // ul is in section ?
+    if (section.className == "tasks") {                      // section is section ?
         const liEl = document.querySelector(".dragzone")     // li that i give him special class 
         ulEl.insertBefore(liEl, ulEl.firstChild);
         data[section.id].unshift(liEl.textContent)           // update to data
