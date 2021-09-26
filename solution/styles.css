@@ -1,10 +1,118 @@
 body{
     text-align: center;
+    font-family: Sans-serif;
+    font-size: 16;
+    background-color: #daeaf0;
+}
+
+#page-title{
+    margin: 0em;
+}
+
+/* headers */
+.headers{
+    margin: 0.5em;
+    margin-bottom: auto;    
+    font-size:1.5em;
+}
+#head-todo{
+    color:#FF3D00;
+}
+#head-in-progress{
+    color:#FFB300;
+}
+#head-done{
+    color:#8BC34A;
+}
+
+/* border to each section */
+#todo{
+    border-top: 5px solid #FF3D00;
+}
+#in-progress{
+    border-top: 5px solid #FFB300;  
+}
+#done{
+    border-top: 5px solid #8BC34A;
+}
+
+main{
+    display: flex;
+    margin-top: 0.8em;
+    margin-left: 5%;
+    margin-right: 5%;
+    justify-content: space-between;
+}
+section{
+    min-width: 15em;
+    padding: 1em;
+    margin-bottom: auto;
+    flex-direction: column;
+    align-items: center;
+    display: block;
+    position: relative;
+    list-style: none;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-size: 1em; 
+    min-height: 120px;
+    background: #fff;
+    border-radius: 0.8em;
     
+}    
+section:hover {
+    background: rgba(230, 255, 253, 0.829); 
+    box-shadow: 10px 10px 5px #2a2828;
 }
 .tasks{
-    border: 2px dotted coral;
+    margin: 0.5em;
+    color: grey;
+    border: 1px solid;
+}
+ul{
+    padding-top: 2em;
+    padding-left: 0em;
+    margin-bottom: auto;
+    margin-top: auto;
+}
+li{
+    min-width: 10em;
+    min-height: 1.5em; 
+    max-width: 7em;
+    max-height: 3em; 
+    position:relative;
+    background:rgb(192, 236, 172);
+    overflow:hidden;
+    margin: 1.5em;
+    padding: 0.8em;
+    border-color: rgb(0, 0, 0);
+    border-radius: 2em 0 2em 0;
+    box-shadow:
+        inset 0 -30px 30px rgba(0,0,0,0.2),
+        inset 0 20px 10px rgba(0,0,0,0.2),
+        0 5px 5px 5px rgba(0,0,0,0.2); 
+    font: italic small-caps bold 16px/2 cursive;
+    font-size: 1.2em;
+    font-weight: bold;
+    color:#110e36;
+    cursor: grab; 
+}
+input{
+    border-color: rgb(15, 41, 114) ;
+    border-radius: 10%;
+    border: 0.2em solid;
+    margin: 0.3em;
+    text-align: center;
+    font-size: 1em;
+    font-style: italic;
+    transition: all .5s ease-in-out;
+    letter-spacing: 0.1em;
+    outline: none;
+}
+.button{
     margin-top: 1em;
-    margin-bottom: 1em;
-    margin-right: 1em;
-    margin-left: 1em;
+    transition: all .5s ease-in-out;
+    text-align: center;
+    border: 0.1em solid;
+    border-radius: 1.5em;
+    font-size: 1em;
+}
