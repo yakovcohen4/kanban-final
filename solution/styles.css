@@ -116,3 +116,63 @@ input{
     border-radius: 1.5em;
     font-size: 1em;
 }
+.btn{
+    border: 0.1em solid;
+    border-radius: 1em;
+    text-align: center;
+    font-size: 1em;
+    font-style: italic;
+    margin-top: 0.3em;
+}
+#search{
+    height: 2em;
+    width: 8em;
+    border: 0.2em solid;
+    border-radius: 1.5em;
+    text-align: center;
+    padding: 0.6em;
+    margin: 0.3em;
+    font-size: 1.5em;
+    font-style: italic;
+    letter-spacing: 0.1em;
+    outline: none;
+    transition: all .5s ease-in-out;
+    background-color: #e4b48d;
+    color:rgb(0, 0, 0);
+}
+
+.dragzone{
+    width: 6em;
+    height: 1.2em;
+    background: rgb(93, 233, 116);
+}
+
+.loader {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+}
+.loader:after {
+    content: " ";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid rgb(238, 209, 81);
+    border-color: rgb(236, 94, 94) trrgb(255, 0, 0)arent rgb(58, 37, 126) transparent;
+    animation: loader 1.2s linear infinite;
+} 
+@keyframes loader {
+0% {
+    transform: rotate(0deg);
+    }
+100% {
+    transform: rotate(360deg);
+    }   
+}
+
+#time{
+    font-size: 1.5em;
+    font-family: cursive;
+}

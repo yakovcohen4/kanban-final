@@ -149,8 +149,102 @@ function searchTask() {
     }
 }
 
+// drag & drop Bonuse
+function dragStart(e){
+    const liEl = e.target;
+    const section = liEl.parentElement.parentElement;           
+    if (liEl.classList.contains("task")){                       // li is li ?
+        liEl.classList.add("dragzone")                          // add the special class
+        e.dataTransfer.setData('text/plain',"dragzone")         // data transfer
+        let index = data[section.id].indexOf(liEl.textContent); 
+        data[section.id].splice(index,1);                       // update data
+    }
+    localStorage.setItem("tasks",JSON.stringify(data))          // update local
+}
+
+function dragOver(e){
+    e.preventDefault();
+}
+
+function dragDrop(e){
+    const ulEl = e.target;                                     
+    const section = ulEl.parentElement;
+    if (section.className == "tasks") {                      // ul is in section ?
+        const liEl = document.querySelector(".dragzone")     // li that i give him special class 
+        ulEl.insertBefore(liEl, ulEl.firstChild);
+        data[section.id].unshift(liEl.textContent)           // update to data
+        liEl.classList.remove("dragzone")                    // remove the special class from li
+    }
+    localStorage.setItem("tasks",JSON.stringify(data))       // update local
+}
+
+
+document.getElementById("load-btn").addEventListener("click",load)
+async function load (){
+    try {
+        const spin = document.getElementById("load");                    // add loading
+        spin.setAttribute("class","loader")
+        const url = "https://json-bins.herokuapp.com/bin/614adb274021ac0e6c080c13";
+        const headers = {  
+            Accept: "application/json",
+            "Content-Type": "application/json" 
+        }
+        const response = await fetch (url,{
+            method:"GET",
+            headers
+        })
+        const mydata = await response.json();
+        clear();                                                          // clear the page                    
+        localStorage.setItem("tasks", JSON.stringify(mydata.tasks.data)); // update local
+        data = mydata.tasks.data;                                         // update data
+        printData();                                                      // print the page 
+        spin.removeAttribute("class","loader");                           // remove loading
+    }
+    catch(error){
+        return alert("error")
     }
 }
+
+// 
+document.getElementById("save-btn").addEventListener("click",save)
+async function save (){
+   try {
+        const spin = document.getElementById("load");                   // add loading
+        spin.setAttribute("class","loader")
+    
+        const url = "https://json-bins.herokuapp.com/bin/614adb274021ac0e6c080c13";
+        const body = JSON.stringify({"tasks":{data}})
+        const headers = {  
+            Accept: "application/json",
+            "Content-Type": "application/json" 
+        }
+        const response = await fetch (url,{
+            method: "PUT",
+            body,
+            headers
+        }) 
+        spin.removeAttribute("class","loader");                         // remove loading
+    }
+    catch(error){
+        return alert("error")
+    }
+}
+
+// clear the tasks in the page 
+document.getElementById("clear-btn").addEventListener("click",clear)
+function clear (){
+    const tasks = document.querySelectorAll(".task")
+    for(const task of tasks){
+        task.remove();
+    }
+    data = {
+        "todo": [],
+        "in-progress": [],
+        "done": []
+    };
+    localStorage.setItem("tasks",JSON.stringify(data));
+}
+
 // create an element 
 function createElement(tagName, text , classes = [], attributes = {}, eventListeners = {}){
 
@@ -203,3 +297,21 @@ function printData(){
     }
 }
 
+// nice fun that give me the time the day
+function startTime() {
+    let today = new Date();
+    let h = today.getHours();
+    let m = today.getMinutes();
+    let s = today.getSeconds();
+    // add a zero in front of numbers<10
+    document.getElementById("time").innerHTML = h + ":" + m + ":" + s;
+    m = checkTime(m);
+    s = checkTime(s);
+    var t = setTimeout(function(){ startTime() }, 500);
+}
+function checkTime(i) {
+    if (i < 10) {
+        i = "0" + i;
+    }
+    return i;
+}
