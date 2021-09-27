@@ -178,7 +178,7 @@ function dragDrop(e){
     localStorage.setItem("tasks",JSON.stringify(data))       // update local
 }
 
-
+// load the page
 document.getElementById("load-btn").addEventListener("click",load)
 async function load (){
     try {
@@ -205,7 +205,7 @@ async function load (){
     }
 }
 
-// 
+// save the page
 document.getElementById("save-btn").addEventListener("click",save)
 async function save (){
    try {
