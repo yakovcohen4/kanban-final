@@ -108,11 +108,11 @@ function switchTasks(e){
             data[PropObj].splice(index,1);                          // remove from data
         }
         else if (e.altKey && e.key === '2'){
-        let ul = document.querySelector(".in-progress-tasks");       
-        ul.insertBefore(liEl,ul.firstChild);
-        data["in-progress"].unshift(liValue);                      
-        let index = data[PropObj].indexOf(liValue);
-        data[PropObj].splice(index,1);
+            let ul = document.querySelector(".in-progress-tasks");       
+            ul.insertBefore(liEl,ul.firstChild);
+            data["in-progress"].unshift(liValue);                      
+            let index = data[PropObj].indexOf(liValue);
+            data[PropObj].splice(index,1);
         }
         else if (e.altKey && e.key === '3'){
             let ul = document.querySelector(".done-tasks");
