@@ -1,20 +1,19 @@
 # Cyber4s 3rd Pre-Course Final Project
 
-## What we will be building
+## What i built is 
 
 Welcome to your pre-course final project. You are going to build a task-management application.
 `https://yakovcohen4.github.io/kanban-final/solution/`
 
-![Example](./final.jpg)
-
 ## Instructions
 
  1. In my Kanban you can add your tasks in the bottom of every section.
- 2. You can move your tasks between the sections wish Alt+1/2/3 (1-toDo,2-inProgress,3-Done).
+ 2. You can move your tasks between the sections with Alt+1/2/3 (1-toDo,2-inProgress,3-Done).
     For your convenience you can do it with drag & drop function.
  3. In the save&load buttons you can save your data and in the next time you will 
     get in the web you load your data.
- 4. In addition, טou can clear all the tasks and add new tasks, do not forget to do save :)
+ 4. In addition, you can clear all the tasks and add new tasks, do not forget to do save :)
+ 5. To edit task you can double click, the background will also change in this mode.
 
 
 ### Page Structure
