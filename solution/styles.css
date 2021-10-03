@@ -4,7 +4,6 @@ body{
     font-size: 16;
     background-color: #daeaf0;
 }
-
 #page-title{
     margin: 0em;
 }
@@ -57,7 +56,6 @@ section{
     min-height: 120px;
     background: #fff;
     border-radius: 0.8em;
-    
 }    
 section:hover {
     background: rgba(230, 255, 253, 0.829); 
@@ -116,6 +114,11 @@ input{
     border-radius: 1.5em;
     font-size: 1em;
 }
+.button:hover {
+    background: rgba(230, 255, 253, 0.829); 
+    box-shadow: 5px 5px 2.5px #2a2828;
+    font-size: 1.1em;
+}
 .btn{
     border: 0.1em solid;
     border-radius: 1em;
@@ -123,6 +126,11 @@ input{
     font-size: 1em;
     font-style: italic;
     margin-top: 0.3em;
+}
+.btn:hover {
+    background: rgba(230, 255, 253, 0.829); 
+    box-shadow: 5px 5px 2.5px #2a2828;
+    font-size: 1.1em;
 }
 #search{
     height: 2em;

@@ -5,6 +5,8 @@
 Welcome to your pre-course final project. You are going to build a task-management application.
 `https://yakovcohen4.github.io/kanban-final/solution/`
 
+![Example](./final.jpg)
+
 ## Instructions
 
  1. In my Kanban you can add your tasks in the bottom of every section.
