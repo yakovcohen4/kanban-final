@@ -11,6 +11,11 @@ else{ // if there is localStorage take it
     localStorage.getItem("tasks")
 }
 
+// this fun update local storage
+function updateLocalStrorage(data){
+    localStorage.setItem("tasks",JSON.stringify(data))
+}
+
 data = JSON.parse(localStorage.getItem("tasks"));
 
 // add event listener for each cutton 
@@ -34,13 +39,22 @@ function addTaskToSection({target}) {
             return alert("You did not enter a task")
         }
         const ul = section.querySelector("ul");
-        const newTask = createElement("li", inputTextValue, ["task"], 
-                    {draggable:"true", contenteditable:true},
-                    {click: editTask, mouseover: switchTasks, dragstart:dragStart})
+        const newTask = addTask(inputTextValue);
         ul.insertBefore(newTask, ul.firstChild);                    // add before first child
         addTasksToLocal(target, inputTextValue)                     // update to local
         section.querySelector("input").value = "";                  // reset input value
     }
+}
+
+// fun add task that create element li
+function addTask(inputTextValue){
+    const newTask = createElement(
+        "li", 
+        inputTextValue,
+        ["task"], 
+        {draggable:"true", contenteditable:true},
+        {click: editTask, mouseover: switchTasks, dragstart:dragStart})
+    return newTask;
 }
 
 // update the task to local
@@ -57,7 +71,7 @@ function addTasksToLocal(target, newTask){
     if (target === doneButtonEl){
         data[PropObj].unshift(newTask)
     }
-    localStorage.setItem("tasks",JSON.stringify(data))
+    updateLocalStrorage(data);
 }
 
 
@@ -83,10 +97,9 @@ function editTask (event){
         else{                                                 // else ---> uptade the task in data
             let index = data[PropObj].indexOf(oldValue);
             data[PropObj].splice(index,1,newValue);
-            console.log(data)
         }
         liEl.style.backgroundColor="rgb(192, 236, 172)";      // change the background agian
-        localStorage.setItem("tasks",JSON.stringify(data))    // change the local storage to data
+        updateLocalStrorage(data);                            // change the local storage to data
     }
 }
 
@@ -99,13 +112,14 @@ function switchTasks(e){
         const liValue = liEl.textContent;                           // value of li
         const section = liEl.closest("section");
         let PropObj = section.id;                                   // for the data
-        
+        //console.log(PropObj)
         if (e.altKey && e.key === '1'){
             let ul = document.querySelector(".to-do-tasks");        
             ul.insertBefore(liEl,ul.firstChild);                    // push to dom
             data["todo"].unshift(liValue);                          // push to first in data
-            let index = data[PropObj].indexOf(liValue);             // get the index
-            data[PropObj].splice(index,1);                          // remove from data
+            updateData(PropObj,liValue)
+            // let index = data[PropObj].indexOf(liValue);             // get the index
+            // data[PropObj].splice(index,1);                          // remove from data
         }
         else if (e.altKey && e.key === '2'){
             let ul = document.querySelector(".in-progress-tasks");       
@@ -124,9 +138,15 @@ function switchTasks(e){
         else return;
         
         liEl = undefined;
+        }   
+    updateLocalStrorage(data);                                            // update to local
     }   
-    localStorage.setItem("tasks",JSON.stringify(data))                // update to local
-}   
+}
+
+function updateData(PropObj,liValue){
+                         
+    let index = data[PropObj].indexOf(liValue);            
+    data[PropObj].splice(index,1);
 }
 
 // function searchTask ---> tasks hidden what is irrelevant 
@@ -159,7 +179,7 @@ function dragStart(e){
         let index = data[section.id].indexOf(liEl.textContent); 
         data[section.id].splice(index,1);                       // update data
     }
-    localStorage.setItem("tasks",JSON.stringify(data))          // update local
+    //localStorage.setItem("tasks",JSON.stringify(data))          // update local
 }
 
 function dragOver(e){
@@ -175,7 +195,8 @@ function dragDrop(e){
         data[section.id].unshift(liEl.textContent)           // update to data
         liEl.classList.remove("dragzone")                    // remove the special class from li
     }
-    localStorage.setItem("tasks",JSON.stringify(data))       // update local
+    //localStorage.setItem("tasks",JSON.stringify(data))       // update local
+    updateLocalStrorage(data);
 }
 
 // load the page
@@ -194,8 +215,8 @@ async function load (){
             headers
         })
         const mydata = await response.json();
-        clear();                                                          // clear the page                    
-        localStorage.setItem("tasks", JSON.stringify(mydata.tasks.data)); // update local
+        clear();                                                          // clear the page                         
+        updateLocalStrorage(mydata.tasks.data);                           // update local
         data = mydata.tasks.data;                                         // update data
         printData();                                                      // print the page 
         spin.removeAttribute("class","loader");                           // remove loading
@@ -242,7 +263,7 @@ function clear (){
         "in-progress": [],
         "done": []
     };
-    localStorage.setItem("tasks",JSON.stringify(data));
+    updateLocalStrorage(data);
 }
 
 // create an element 
