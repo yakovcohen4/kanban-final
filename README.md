@@ -1,26 +1,22 @@
 # Cyber4s 3rd Pre-Course Final Project
 
-## What we will be building
+## What i built is 
 
 Welcome to your pre-course final project. You are going to build a task-management application.
+`https://yakovcohen4.github.io/kanban-final/solution/`
 
-![Example](./example.png)
+![Example](./final.jpg)
 
 ## Instructions
 
-1. Fork this repo into your account.
-2. Clone the forked repo to your computer.
-3. Run the [setup](#setup) script.
-4. Create a new git branch for your work.
-5. Complete the project [requirements](#requirements).
-6. Push your work to GitHub.
-7. [Submit](#submission) your work.
+ 1. In my Kanban you can add your tasks in the bottom of every section.
+ 2. You can move your tasks between the sections with Alt+1/2/3 (1-toDo,2-inProgress,3-Done).
+    For your convenience you can do it with drag & drop function.
+ 3. In the save&load buttons you can save your data and in the next time you will 
+    get in the web you load your data.
+ 4. In addition, you can clear all the tasks and add new tasks, do not forget to do save :)
+ 5. To edit task you can double click, the background will also change in this mode.
 
-## Setup
-
-Execute `npm run final <your name>` (replace `<your name>` with your name). This command will install all the needed dependencies, and generate an [api-data.txt](#api-integration) file.
-
-## Requirements
 
 ### Page Structure
 
@@ -38,76 +34,12 @@ In addition the page should contain:
 - [ ] a heading with a `page-title` id
 - [ ] a global input with the `search` id
 
-### Interaction
-
-- [ ] When the user clicks on one of the add-task buttons, a new task will be added to the respective list. The task content will be taken from the respective input field.
-- [ ] Trying to submit empty tasks should cause an alert.
-- [ ] Double clicking a task element will enable the user to edit its text. When the task element loses focus (`blur` event) the change will be saved.
-- [ ] Hovering over a task element and pressing `alt + 1-3` will move the task to the appropriate list (`1`: todo, `2`: in-progress, `3`: done).
-- [ ] The search input should filter tasks case-**in**sensitively, so that only tasks that match the search string are displayed. The filter will be reapplied every time the user changes the content of the search input (on **every keystroke**).
 
 ### Storage
 
-- [ ] The data of all the tasks should be saved to `localStorage` following any changes made to the data. The data should be saved under a storage key named `tasks`. It should be saved in the following format (use the data saved in the local storage to keep the data on the page after refresh):
+your tasks are saven in your localStorage. you can save it in the API, and load it in your next visit.
+`https://json-bins.herokuapp.com/bin/614adb274021ac0e6c080c13`
 
-```json
-{
-  "todo": [],
-  "in-progress": [],
-  "done": []
-}
-```
-
-- [ ] Even if there are no tasks, there should still be a `tasks` key in the `localStorage`, in the above format (the arrays will just be empty).
-
-## Bonuses
-
-- [ ] Implement drag-and-drop sorting of tasks.
-- [ ] Add API integration:
-
-  - [ ] Add save and load buttons that sync the current tasks to the API (see details in the [api-data.txt](#api-integration) file).
-  - [ ] Remove the `.skip` from the two last tests in `main.test.js`.
-  - [ ] While waiting for a response from the API display a loader with the class `loader`.
-  - [ ] If an error occurs show an alert.
-  - [ ] If the data loaded from the API is different from the local data, replace the local data with the API data. Make sure you update both the `localStorage` and the DOM.
-
-- [ ] Add any additional cool features you can think of...
-
-## README
-
-You are expected to change the README of your project to showcase your application. Make it readable and explain what your app does. Put a screenshot and a link to GitHub pages.
-
-## Template
-
-You are provided with a template to write your code in, inside the `solution` folder. You should write your code inside `index.html`, `index.js`, `style.css`. You may create additional files for your convenience, but do not change the names of the existing ones.
-
-## API Integration
-
-Once you complete the [initial setup](#setup) you will see an `api-data.txt` file that was created in the project folder. This file will contain the URLs which you can access the API with, using a unique bin ID that was generated for you.
-
-The API is a simple remote storage that gives you a "bin" where you can store data. It allows you to save a chunk of data, or load it.
-
-## Testing
-
-We have added some automated tests for you to use. They will help you make sure your code covers the requirements.
-
-To run the tests, execute `npm run test`.
-
-## Grading
-
-Your work will be graded based on the following considerations:
-
-- The number of tests you pass
-- Readable and ordered code
-  - Spacing & indentation
-  - Indicative vairable/function names
-  - Comments (where necessary)
-- Proper use of Git
-  - Small, standalone commits
-  - Descriptive commit messages
-  - Working in branches and creating a proper PR
-- Convenient visual design (make your app b-e-a-utiful)
-- Extra features you might have added
 
 ## Submission
 
