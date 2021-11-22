@@ -1,3 +1,5 @@
+import "./styles.css"
+
 // if there is not localStorage create 
 if(!JSON.parse(localStorage.getItem("tasks"))){
     let data ={
